@@ -1,0 +1,4 @@
+com\keyin\airportcli\client\AirportApiClientTest$FakeTransport.class
+com\keyin\airportcli\ui\ConsoleMenuTest.class
+com\keyin\airportcli\client\AirportApiClientTest.class
+com\keyin\airportcli\ui\ConsoleMenuTest$FakeTransport.class
