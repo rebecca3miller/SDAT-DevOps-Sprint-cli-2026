@@ -1,0 +1,7 @@
+com\keyin\airportcli\AirportCliApplication.class
+com\keyin\airportcli\client\AirportApiClient.class
+com\keyin\airportcli\client\JavaHttpTransport.class
+com\keyin\airportcli\client\HttpTransport.class
+com\keyin\airportcli\client\ApiException.class
+com\keyin\airportcli\ui\ConsoleMenu.class
+com\keyin\airportcli\client\HttpResult.class
