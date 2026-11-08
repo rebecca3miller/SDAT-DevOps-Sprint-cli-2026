@@ -1,11 +1,11 @@
 package com.keyin.airportcli.ui;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.keyin.airportcli.client.ApiException;
-import com.keyin.airportcli.client.AirportApiClient;
-
 import java.io.IOException;
 import java.util.Scanner;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.keyin.airportcli.client.AirportApiClient;
+import com.keyin.airportcli.client.ApiException;
 
 public class ConsoleMenu {
     private final AirportApiClient api;
@@ -113,7 +113,7 @@ public class ConsoleMenu {
     private void displayAircraft(JsonNode item) {
         String type = text(item, "type", "Aircraft");
         String airline = text(item, "airlineName", "Unknown airline");
-        System.out.println("• " + type + " — " + airline
+        System.out.println("- " + type + " — " + airline
                 + " (ID: " + text(item, "id", "N/A") + ")");
         if (item.has("numberOfPassengers")) {
             System.out.println("  Passenger capacity: " + item.get("numberOfPassengers").asText());
@@ -123,7 +123,7 @@ public class ConsoleMenu {
     private void displayAirport(JsonNode item) {
         String name = text(item, "name", "Unnamed airport");
         String code = text(item, "code", "No airport code");
-        System.out.println("• " + name + " (" + code + ")"
+        System.out.println("- " + name + " (" + code + ")"
                 + " (ID: " + text(item, "id", "N/A") + ")");
     }
 
