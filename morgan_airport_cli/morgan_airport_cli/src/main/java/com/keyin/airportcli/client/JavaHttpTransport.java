@@ -16,7 +16,7 @@ public class JavaHttpTransport implements HttpTransport {
     @Override
     public HttpResult get(String url) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create("http://localhost:8080/"))
                 .header("Accept", "application/json")
                 .GET()
                 .build();
