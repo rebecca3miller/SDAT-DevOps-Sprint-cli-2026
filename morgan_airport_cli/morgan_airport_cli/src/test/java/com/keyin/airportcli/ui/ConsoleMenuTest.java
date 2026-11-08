@@ -12,6 +12,19 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConsoleMenuTest {
+
+    @Test 
+    void optionOneDisplaysAirportsInEachCity() {
+        FakeTransport transport = new FakeTransport(
+                "[{\"city\":\"Toronto\",\"airports\":[{\"id\":1,\"name\":\"Toronto Pearson\",\"code\":\"YYZ\"}]}]");
+        AirportApiClient api = new AirportApiClient("http://localhost:8080", transport);
+        String output = runMenu(api, "1\n0\n");
+
+        assertEquals("http://localhost:8080/airports", transport.lastUrl);
+        assertTrue(output.contains("Toronto"));
+        assertTrue(output.contains("YYZ"));
+    }
+
     @Test
     void optionTwoPromptsForPassengerAndDisplaysAircraft() {
         FakeTransport transport = new FakeTransport(
@@ -46,15 +59,15 @@ class ConsoleMenuTest {
         assertTrue(output.contains("YYZ"));
     }
 
-    @Test
-    void optionOneClearlyReportsThatEndpointIsPending() {
-        FakeTransport transport = new FakeTransport("[]");
-        AirportApiClient api = new AirportApiClient("http://localhost:8080", transport);
-        String output = runMenu(api, "1\n0\n");
+    // @Test
+    // void optionOneClearlyReportsThatEndpointIsPending() {
+    //     FakeTransport transport = new FakeTransport("[]");
+    //     AirportApiClient api = new AirportApiClient("http://localhost:8080", transport);
+    //     String output = runMenu(api, "1\n0\n");
 
-        assertTrue(output.contains("not available yet"));
-        assertNull(transport.lastUrl);
-    }
+    //     assertTrue(output.contains("not available yet"));
+    //     assertNull(transport.lastUrl);
+    // }
 
     private String runMenu(AirportApiClient api, String input) {
         ByteArrayOutputStream output = new ByteArrayOutputStream();

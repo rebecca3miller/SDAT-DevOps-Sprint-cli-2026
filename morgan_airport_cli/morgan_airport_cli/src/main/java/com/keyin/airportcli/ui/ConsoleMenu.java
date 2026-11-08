@@ -30,9 +30,10 @@ public class ConsoleMenu {
 
             try {
                 switch (choice) {
-                    case "1" -> System.out.println(
-                            "Question 1 is not available yet. The city-to-airports endpoint "
-                            + "must be confirmed with the API team first.");
+                    case "1" -> {
+                        display("Airports in each city", 
+                            api.getAirports());
+                    }
                     case "2" -> {
                         long id = readPositiveId("Passenger ID: ");
                         display("Aircraft flown on by passenger " + id,
@@ -67,7 +68,7 @@ public class ConsoleMenu {
 
     private void printMenu() {
         System.out.println("\nChoose a question:");
-        System.out.println("1. What airports are in each city? (pending endpoint)");
+        System.out.println("1. What airports are in each city?");
         System.out.println("2. What aircraft has each passenger flown on?");
         System.out.println("3. What airports does each aircraft take off from and land at?");
         System.out.println("4. What airports have passengers used?");

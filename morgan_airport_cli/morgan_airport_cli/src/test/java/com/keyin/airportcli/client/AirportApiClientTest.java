@@ -1,7 +1,7 @@
 package com.keyin.airportcli.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +19,18 @@ class AirportApiClientTest {
     void setUp() {
         transport = new FakeTransport();
         api = new AirportApiClient("http://localhost:8080/", transport);
+    }
+
+    @Test 
+    void questionOneRequestsAirportsAndParsesJson() throws Exception {
+        transport.result = new HttpResult(200,
+                "[{\"city\":\"Toronto\",\"airports\":[{\"id\":1,\"name\":\"Toronto Pearson\",\"code\":\"YYZ\"}]}]");
+
+        JsonNode result = api.getAirports();
+
+        assertEquals("http://localhost:8080/airports", transport.lastUrl);
+        assertEquals("Toronto", result.get(0).get("city").asText());
+        assertEquals("YYZ", result.get(0).get("airports").get(0).get("code").asText());
     }
 
     @Test

@@ -21,6 +21,11 @@ public class AirportApiClient {
         this.objectMapper = objectMapper;
     }
 
+    // Question 1: What airports are in each city?
+    public JsonNode getAirports() throws IOException, InterruptedException {
+        return get("/airports");
+    }
+
     // Question 2: What aircraft has a passenger flown on?
     public JsonNode getAircraftForPassenger(long passengerId)
             throws IOException, InterruptedException {
